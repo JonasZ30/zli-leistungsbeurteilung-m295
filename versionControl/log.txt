@@ -1,3 +1,27 @@
+commit 8bf8bf9b3add9f887a003930a3b2b7f061c3d5e4
+Author: Jonas Svay <svay.jonas6@gmail.com>
+Date:   Fri Dec 22 15:30:50 2023 +0000
+
+    chore: README author, version, date
+
+commit f1b841ab8290028925af8d75439aaf0438432ff1
+Author: Jonas Svay <svay.jonas6@gmail.com>
+Date:   Fri Dec 22 15:29:57 2023 +0000
+
+    chore: author,version,date
+
+commit e23cb38c34dfc8e38e8cae1b596619b8feaca8d5
+Author: Jonas Svay <svay.jonas6@gmail.com>
+Date:   Fri Dec 22 15:17:23 2023 +0000
+
+    chore: README
+
+commit 64afd9eaefe59e3bd2044c50bed66243ed9c3fe8
+Author: Jonas Svay <svay.jonas6@gmail.com>
+Date:   Fri Dec 22 15:08:13 2023 +0000
+
+    chore: new README & version control
+
 commit 62e9df18b5ce5d409022857c46de24d8fd6956f1
 Author: Jonas Svay <svay.jonas6@gmail.com>
 Date:   Fri Dec 22 14:56:19 2023 +0000
