@@ -1,0 +1,41 @@
+commit 62e9df18b5ce5d409022857c46de24d8fd6956f1
+Author: Jonas Svay <svay.jonas6@gmail.com>
+Date:   Fri Dec 22 14:56:19 2023 +0000
+
+    chore: test and updated README
+
+commit e238435aed014b292348546de9f4e1e2012e420f
+Author: Jonas Svay <svay.jonas6@gmail.com>
+Date:   Fri Dec 22 13:50:45 2023 +0000
+
+    chore: folder structure
+
+commit 648329460c922625bb02e1bb3636eae747d264ee
+Author: Jonas Svay <svay.jonas6@gmail.com>
+Date:   Fri Dec 22 12:41:41 2023 +0000
+
+    chore: authentication only valid email
+
+commit 7f5695c58c5c0a31937a9a87e86b74f6d189f7b2
+Author: Jonas Svay <svay.jonas6@gmail.com>
+Date:   Fri Dec 22 10:42:42 2023 +0000
+
+    chore: disabling unnecessary errors
+
+commit 295c8737564072746a023bcb41fb7c8724639c21
+Author: Jonas Svay <svay.jonas6@gmail.com>
+Date:   Fri Dec 22 10:26:07 2023 +0000
+
+    chore: Hauptaufgaben & Authentifizierung
+
+commit efa96ec363146adac8298371778178dec3fc52bb
+Author: Jonas Svay <svay.jonas6@gmail.com>
+Date:   Fri Dec 22 08:32:11 2023 +0000
+
+    chore: Set up environment
+
+commit c65c312a4b2b9083ab663c4ddc425bf2d51bdc11
+Author: Jonas Svay <svay.jonas6@gmail.com>
+Date:   Fri Dec 22 08:40:44 2023 +0100
+
+    first commit
