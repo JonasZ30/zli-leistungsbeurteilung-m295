@@ -1,3 +1,6 @@
+/* eslint-disable no-confusing-arrow */
+/* eslint-disable no-return-assign */
+/* eslint-disable dot-notation */
 const express = require('express');
 const { randomUUID } = require('node:crypto');
 const cookie = require('./authentication');
@@ -8,10 +11,20 @@ const port = 4040;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-let tasks = [{
-  title: 'Enjoy my christmas holiday',
-  author: 'Jonas Svay',
-}];
+let tasks = [
+  {
+    title: 'Sample Book 1',
+    author: 'John Doe',
+  },
+  {
+    title: 'Sample Book 2',
+    author: 'Jane Smith',
+  },
+  {
+    title: 'Sample Book 3',
+    author: 'Bob Johnson',
+  },
+];
 
 app.get('/tasks', cookie, (req, res) => {
   if (req.session.email) {
@@ -39,6 +52,7 @@ app.post('/tasks', cookie, (req, res) => {
 
 app.get('/tasks/:id', cookie, (req, res) => {
   if (req.session.email) {
+    // eslint-disable-next-line no-shadow
     const task = tasks.find((task) => task.id === req.params.id);
     res.status(200).send(task);
   } else {
