@@ -12,10 +12,7 @@ const port = 4041;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(
-  '/',
-  cookie,
-);
+app.use('/', cookie);
 
 let tasks = [
   {

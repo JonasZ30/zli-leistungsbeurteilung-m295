@@ -1,0 +1,156 @@
+{
+    "v": 2,
+    "name": "zli-leistungsbeurteilung-tests",
+    "folders": [],
+    "requests": [
+      {
+        "v": "1",
+        "endpoint": "http://localhost:4041/tasks",
+        "name": "GET tasks",
+        "params": [],
+        "headers": [],
+        "method": "GET",
+        "auth": {
+          "authType": "none",
+          "authActive": true
+        },
+        "preRequestScript": "",
+        "testScript": "// Check is status code 200\n{\n  pw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200)\n  })\n}",
+        "body": {
+          "contentType": null,
+          "body": "{\n  \"email\":\"jonsva@gmail.com\",\n  \"password\":\"m285\"\n}"
+        }
+      },
+      {
+        "v": "1",
+        "endpoint": "http://localhost:4041/tasks",
+        "name": "POST tasks",
+        "params": [],
+        "headers": [],
+        "method": "POST",
+        "auth": {
+          "authType": "none",
+          "authActive": true
+        },
+        "preRequestScript": "",
+        "testScript": "// Check is status code 201\n{\n  pw.test(\"Status code is 201\", () => {\n    pw.expect(pw.response.status).toBe(201)\n  })\n}",
+        "body": {
+          "contentType": "application/json",
+          "body": "{\n  \"title\": \"Jonas12\",\n  \"author\": \"Jonas SVay\"\n}"
+        }
+      },
+      {
+        "v": "1",
+        "endpoint": "http://localhost:4040/tasks/cd274724-965d-4fb7-9678-1afd7da0a1a1",
+        "name": "GET tasks with id",
+        "params": [],
+        "headers": [],
+        "method": "GET",
+        "auth": {
+          "authType": "none",
+          "authActive": true
+        },
+        "preRequestScript": "",
+        "testScript": "// Check is status code 200\n{\n  pw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200)\n  })\n}",
+        "body": {
+          "contentType": null,
+          "body": "{\n  \"email\":\"desk@library.example\",\n  \"password\":\"m295\"\n}"
+        }
+      },
+      {
+        "v": "1",
+        "endpoint": "http://localhost:4040/tasks/0ec59f10-f214-4155-a8b4-57d1ea5a1024",
+        "name": "PATCH tasks with id",
+        "params": [],
+        "headers": [],
+        "method": "PATCH",
+        "auth": {
+          "authType": "none",
+          "authActive": true
+        },
+        "preRequestScript": "",
+        "testScript": "// Check is status code 200\n{\n  pw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200)\n  })\n}",
+        "body": {
+          "contentType": "application/json",
+          "body": "{\n  \"title\": \"Der Grosse\",\n  \"author\": \"JonSva\"\n}"
+        }
+      },
+      {
+        "v": "1",
+        "endpoint": "http://localhost:4040/tasks/acfe8f61-b0cd-423d-9d06-c4758ecdbe5d",
+        "name": "DELETE tasks with id",
+        "params": [],
+        "headers": [],
+        "method": "DELETE",
+        "auth": {
+          "authType": "none",
+          "authActive": true
+        },
+        "preRequestScript": "",
+        "testScript": "// Check is status code 204\n{\n  pw.test(\"Status code is 204\", () => {\n    pw.expect(pw.response.status).toBe(204)\n  })\n}",
+        "body": {
+          "contentType": null,
+          "body": "{\n  \"title\": \"Der Grosse\",\n  \"author\": \"JonSva\"\n}"
+        }
+      },
+      {
+        "v": "1",
+        "endpoint": "http://localhost:4041/verify",
+        "name": "POST login",
+        "params": [],
+        "headers": [],
+        "method": "POST",
+        "auth": {
+          "authType": "none",
+          "authActive": true
+        },
+        "preRequestScript": "",
+        "testScript": "// Check is status code 200\n{\n  pw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200)\n  })\n}",
+        "body": {
+          "contentType": "application/json",
+          "body": "{\n  \"email\":\"jonsva@gmail.com\",\n  \"password\":\"m295\"\n}"
+        }
+      },
+      {
+        "v": "1",
+        "endpoint": "http://localhost:4041/verify",
+        "name": "GET verify",
+        "params": [],
+        "headers": [],
+        "method": "GET",
+        "auth": {
+          "authType": "none",
+          "authActive": true
+        },
+        "preRequestScript": "",
+        "testScript": "// Check is status code 200\n{\n  pw.test(\"Status code is 200\", () => {\n    pw.expect(pw.response.status).toBe(200)\n  })\n}",
+        "body": {
+          "contentType": null,
+          "body": "{\n  \"email\":\"jonsva@gmail.com\",\n  \"password\":\"m295\"\n}"
+        }
+      },
+      {
+        "v": "1",
+        "endpoint": "http://localhost:4041/logout",
+        "name": "DELETE logout",
+        "params": [],
+        "headers": [],
+        "method": "DELETE",
+        "auth": {
+          "authType": "none",
+          "authActive": true
+        },
+        "preRequestScript": "",
+        "testScript": "// Check is status code 204\n{\n  pw.test(\"Status code is 204\", () => {\n    pw.expect(pw.response.status).toBe(204)\n  })\n}",
+        "body": {
+          "contentType": null,
+          "body": "{\n  \"email\":\"jonsva@gmail.com\",\n  \"password\":\"m295\"\n}"
+        }
+      }
+    ],
+    "auth": {
+      "authType": "inherit",
+      "authActive": false
+    },
+    "headers": []
+  }

@@ -11,6 +11,7 @@ router.use(session({
   saveUninitialized: true,
 }));
 
+// Async function is from https://www.abstractapi.com/guides/node-email-validation
 async function isEmailValid(email) {
   return emailValidator.validate(email);
 }
@@ -20,28 +21,32 @@ router.post('/login', async (req, res) => {
 
   if (!email || !password) {
     return res.status(401).send({
-      message: 'Email or password missing.',
+      'message': 'Email or password missing.',
     });
   }
   if (password !== 'm295') {
     return res.status(401).send({
-      message: 'Invalid password.',
+      
+      'message': 'Invalid password.',
     });
   }
 
   const { valid, reason, validators } = await isEmailValid(email);
 
-  if (valid) return res.status(200).send('Login successful!');
+  if (valid) {
+    req.session.email = email;
+    return res.status(200).send('Login successful!');
+  }
 
   return res.status(401).send({
-    message: 'Please provide a valid email address.',
-    reason: validators[reason].reason,
+    'message': 'Please provide a valid email address.',
+    'reason': validators[reason].reason,
   });
 });
 
 router.get('/verify', (req, res) => {
   if (req.session.email) {
-    return res.status(200).send({ email: req.session.email });
+    return res.status(200).send({ 'email': req.session.email });
   }
   return res.status(401).send('Verify failed!');
 });
