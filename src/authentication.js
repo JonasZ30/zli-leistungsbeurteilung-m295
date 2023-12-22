@@ -19,21 +19,21 @@ router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    return res.status(400).send({
+    return res.status(401).send({
       message: 'Email or password missing.',
     });
   }
   if (password !== 'm295') {
-    return res.status(400).send({
+    return res.status(401).send({
       message: 'Invalid password.',
     });
   }
 
   const { valid, reason, validators } = await isEmailValid(email);
 
-  if (valid) return res.send({ message: 'OK' });
+  if (valid) return res.status(200).send('Login successful!');
 
-  return res.status(400).send({
+  return res.status(401).send({
     message: 'Please provide a valid email address.',
     reason: validators[reason].reason,
   });

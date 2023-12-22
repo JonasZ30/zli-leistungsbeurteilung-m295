@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable quote-props */
 /* eslint-disable no-confusing-arrow */
 /* eslint-disable no-return-assign */
@@ -25,15 +26,11 @@ let tasks = [
     'title': 'English homework',
     'author': 'Jane Smith',
   },
-  {
-    'title': 'Learn JavaScript',
-    'author': 'Bob Johnson',
-  },
 ];
 
 app.get('/tasks', cookie, (req, res) => {
   if (req.session.email) {
-    res.status(201).send(tasks);
+    res.status(200).send(tasks);
   } else {
     res.status(401).send('Unauthorized');
   }
@@ -49,40 +46,50 @@ app.post('/tasks', cookie, (req, res) => {
     newTask['created_at'] = date.toISOString();
     newTask['finished_at'] = null;
     tasks = [...tasks, req.body];
-    res.status(500).send(tasks);
+    res.status(201).send(tasks);
   } else {
     res.status(401).send('Unauthorized');
   }
 });
 
-app.get('/tasks/:id', cookie, (req, res) => {
+app.get('/tasks/:id', (req, res) => {
   if (req.session.email) {
-    // eslint-disable-next-line no-shadow
-    const task = tasks.find((task) => task.id === req.params.id);
-    res.status(200).send(task);
+    const task = tasks.find((t) => t.id === req.params.id);
+    if (task) {
+      res.status(200).send(task);
+    } else {
+      res.status(404).send('Task not found');
+    }
   } else {
     res.status(401).send('Unauthorized');
   }
 });
 
-// Übernommen von einem alten Auftrag
-app.patch('/tasks/:id', cookie, (req, res) => {
+app.patch('/tasks/:id', (req, res) => {
   if (req.session.email) {
     const keys = Object.keys(req.body);
-    const currentTask = tasks.find((task) => task.id === req.params.id);
-    keys.forEach((key) => currentTask[key] = req.body[key]);
-    tasks = tasks.map((task) => task.id === req.params.id ? currentTask : task);
-    res.send(tasks);
+    const currentTask = tasks.find((t) => t.id === req.params.id);
+    if (currentTask && keys.length > 0) {
+      keys.forEach((key) => (currentTask[key] = req.body[key]));
+      tasks = tasks.map((t) => (t.id === req.params.id ? currentTask : t));
+      res.status(200).send(tasks);
+    } else {
+      res.status(404).send('Task not found');
+    }
   } else {
     res.status(401).send('Unauthorized');
   }
 });
 
-app.delete('/tasks/:id', cookie, (req, res) => {
+app.delete('/tasks/:id', (req, res) => {
   if (req.session.email) {
-    const returnedtask = tasks.find((task) => task.id === req.params.id);
-    returnedtask['finished_at'] = new Date().toISOString();
-    res.status(500).send(tasks);
+    const returnedTask = tasks.find((t) => t.id === req.params.id);
+    if (returnedTask) {
+      returnedTask['finished_at'] = new Date().toISOString();
+      res.status(204).send(tasks);
+    } else {
+      res.status(404).send('Task not found');
+    }
   } else {
     res.status(401).send('Unauthorized');
   }
