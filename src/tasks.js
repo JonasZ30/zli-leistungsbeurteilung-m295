@@ -1,3 +1,4 @@
+/* eslint-disable quote-props */
 /* eslint-disable no-confusing-arrow */
 /* eslint-disable no-return-assign */
 /* eslint-disable dot-notation */
@@ -6,23 +7,27 @@ const { randomUUID } = require('node:crypto');
 const cookie = require('./authentication');
 
 const app = express();
-const port = 4040;
+const port = 4041;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(
+  '/',
+  cookie,
+);
 
 let tasks = [
   {
-    title: 'Sample Book 1',
-    author: 'John Doe',
+    'title': 'Math homework',
+    'author': 'John Doe',
   },
   {
-    title: 'Sample Book 2',
-    author: 'Jane Smith',
+    'title': 'English homework',
+    'author': 'Jane Smith',
   },
   {
-    title: 'Sample Book 3',
-    author: 'Bob Johnson',
+    'title': 'Learn JavaScript',
+    'author': 'Bob Johnson',
   },
 ];
 
@@ -84,5 +89,5 @@ app.delete('/tasks/:id', cookie, (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log('Server running at http://localhost:', port);
+  console.log(`Server running at http://localhost:${port}`);
 });

@@ -1,5 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const session = require('express-session');
 const express = require('express');
+const emailValidator = require('deep-email-validator');
 
 const router = express.Router();
 
@@ -9,18 +11,32 @@ router.use(session({
   saveUninitialized: true,
 }));
 
-const login = {
-  email: 'desk@library.example',
-  password: 'm295',
-};
+async function isEmailValid(email) {
+  return emailValidator.validate(email);
+}
 
-router.post('/login', (req, res) => {
+router.post('/login', async (req, res) => {
   const { email, password } = req.body;
-  if (email?.toLowerCase() === login.email && password === login.password) {
-    req.session.email = email;
-    return res.status(200).send('Login successful!');
+
+  if (!email || !password) {
+    return res.status(400).send({
+      message: 'Email or password missing.',
+    });
   }
-  return res.status(401).send('Invalid credentials!');
+  if (password !== 'm295') {
+    return res.status(400).send({
+      message: 'Invalid password.',
+    });
+  }
+
+  const { valid, reason, validators } = await isEmailValid(email);
+
+  if (valid) return res.send({ message: 'OK' });
+
+  return res.status(400).send({
+    message: 'Please provide a valid email address.',
+    reason: validators[reason].reason,
+  });
 });
 
 router.get('/verify', (req, res) => {
